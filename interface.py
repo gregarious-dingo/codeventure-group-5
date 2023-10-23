@@ -9,9 +9,9 @@ class Interface(tk.Tk):
         self.title = title
         self.geometry(f'{width}x{height}')
 
-    if __name__ == "__main__":
-        codeventure = Interface("CodeVenture")
-        login = LoginFrame(codeventure)
+if __name__ == "__main__":
+    codeventure = Interface("CodeVenture")
+    login = LoginFrame(codeventure)
 
 
 

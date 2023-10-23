@@ -1,4 +1,6 @@
-from login_system import LoginSystem
+import tkinter as tk
+from controllers.login_system import LoginSystem
+from users.learner import Learner
 
 class LoginFrame(tk.Frame):
 
@@ -33,11 +35,25 @@ class LoginFrame(tk.Frame):
         self.password_entry.grid(row=3, column=1, sticky=tk.W, padx=10, pady=10)
 
         login_button = tk.Button(master=self, text="Login",
-                                    command=self.login_system.authenticate_user_login)
+                                    command=self.authenticate_login)
         login_button.grid(row=4, columnspan=2, padx=10, pady=10)
 
         self.login_text = tk.StringVar()
         login_message = tk.Label(master=self, textvariable=self.login_text)
         login_message.grid(row=5, columnspan=2, padx=10, pady=10)
+    
+    def authenticate_login(self):
         
-        #test
+        user = self.login_system.authenticate_user_login(self.username_entry.get(), self.password_entry.get())
+
+        if user != False:
+
+            self.username_entry.delete(0, tk.END)
+            self.password_entry.delete(0, tk.END)
+
+            if isinstance(user, Learner):
+
+                self.place_forget()
+
+                pass
+

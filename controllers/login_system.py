@@ -1,3 +1,4 @@
+from users.user import User
 from users.learner import Learner
 from users.parent import Parent
 from users.educator import Educator
@@ -72,7 +73,7 @@ class LoginSystem:
             account_type_input = "Learner"
             account = Learner(username, password)
             self.users.append(account)
-            Utils.display_str("Account successfully resgistered!")
+            Utils.display_str("Account successfully registered!")
 
         elif account_type_input == '2':
             account_type_input = "Parent"
@@ -121,7 +122,7 @@ class LoginSystem:
     def authenticate_user_login(self, username, password):
         for user in self.users:
             if user.username == username and user.password == password:
-                return user 
+                return user
         return False
 
     def return_user(self, username):
