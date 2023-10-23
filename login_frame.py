@@ -1,6 +1,7 @@
 import tkinter as tk
 from controllers.login_system import LoginSystem
 from users.learner import Learner
+from register_frame import RegisterFrame
 
 class LoginFrame(tk.Frame):
 
@@ -14,8 +15,7 @@ class LoginFrame(tk.Frame):
         login_canvas = login_canvas.grid(row=0, columnspan=2, sticky=tk.S, padx=10, pady=10)
 
         login_title = tk.Label(master=self,
-                                text="Welcome to Health "
-                                    "Clinic Management System",
+                                text="Welcome to CodeVenture",
                                 font=("Arial Bold", 25))
         login_title.grid(row=1, columnspan=2, padx=10, pady=10)
 
@@ -41,6 +41,16 @@ class LoginFrame(tk.Frame):
         self.login_text = tk.StringVar()
         login_message = tk.Label(master=self, textvariable=self.login_text)
         login_message.grid(row=5, columnspan=2, padx=10, pady=10)
+
+        register_button = tk.Button(master=self, text="Register new account",
+                                    command = self.place_register_frame)
+        register_button.grid(row=6, columnspan=2, padx=10, pady=10)
+        
+    def place_register_frame(self):
+        self.place_forget()
+
+        register_frame = RegisterFrame(self.master, self)
+        register_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
     
     def authenticate_login(self):
         

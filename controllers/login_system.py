@@ -56,54 +56,57 @@ class LoginSystem:
             Utils.display_str("Wrong password!")
             return
 
+    # def user_register(self):
+    #     username = input("Enter your new username: ")
+    #     while self.username_available(username) == False:
+    #         Utils.display_str(f'Username {username} already taken!')
+    #         username = input("Enter your new username: ")
+    #     password = input("Enter your new password: ")
+
+    #     print("----------------------")
+    #     print("1. Learner\n2. Parent")
+    #     print("----------------------")
+    #     account_type_input = input("Enter the type of account to be registered: ")
+    #     child = None
+
+    #     if account_type_input == '1':
+    #         account_type_input = "Learner"
+    #         account = Learner(username, password)
+    #         self.users.append(account)
+    #         Utils.display_str("Account successfully registered!")
+
+    #     elif account_type_input == '2':
+    #         account_type_input = "Parent"
+    #         # Ask for parent's learner
+    #         child = input("Please enter the username of your child: ")
+    #         while self.find_account_type(child) != "Learner" or self.username_available(child):
+    #             Utils.display_str("That Learner does not exist!")
+    #             child = input("Please enter the username of your child: ")   
+
+    #         child = self.return_user(child)
+    #         account = Parent(username, password, child)
+    #         self.users.append(account)
+
+    #         Utils.display_str("Account successfully registered!")
+    #     #elif account_type_input == '3':
+    #         #print("Work in progress")
+
+    #     else:
+    #         Utils.invalid_input()
+    #         return
+
+    #     try:
+    #         with open("./data/users.txt", "a") as database:
+    #             # Write data to the next empty line in the file
+    #             if account_type_input == "Learner":
+    #                 database.write(f"{username};{password};Learner;NA\n")  # '\n' to add a newline
+    #             elif account_type_input == "Parent":
+    #                 database.write(f"{username};{password};Parent;{child.username}\n")
+    #     except FileNotFoundError:
+    #         print("The file or directory does not exist.")
+
     def user_register(self):
-        username = input("Enter your new username: ")
-        while self.username_available(username) == False:
-            Utils.display_str(f'Username {username} already taken!')
-            username = input("Enter your new username: ")
-        password = input("Enter your new password: ")
-
-        print("----------------------")
-        print("1. Learner\n2. Parent")
-        print("----------------------")
-        account_type_input = input("Enter the type of account to be registered: ")
-        child = None
-
-        if account_type_input == '1':
-            account_type_input = "Learner"
-            account = Learner(username, password)
-            self.users.append(account)
-            Utils.display_str("Account successfully registered!")
-
-        elif account_type_input == '2':
-            account_type_input = "Parent"
-            # Ask for parent's learner
-            child = input("Please enter the username of your child: ")
-            while self.find_account_type(child) != "Learner" or self.username_available(child):
-                Utils.display_str("That Learner does not exist!")
-                child = input("Please enter the username of your child: ")   
-
-            child = self.return_user(child)
-            account = Parent(username, password, child)
-            self.users.append(account)
-
-            Utils.display_str("Account successfully registered!")
-        #elif account_type_input == '3':
-            #print("Work in progress")
-
-        else:
-            Utils.invalid_input()
-            return
-
-        try:
-            with open("./data/users.txt", "a") as database:
-                # Write data to the next empty line in the file
-                if account_type_input == "Learner":
-                    database.write(f"{username};{password};Learner;NA\n")  # '\n' to add a newline
-                elif account_type_input == "Parent":
-                    database.write(f"{username};{password};Parent;{child.username}\n")
-        except FileNotFoundError:
-            print("The file or directory does not exist.")
+        pass
 
     def turn_off(self):
         Utils.display_str("You have turned off the machine.")
