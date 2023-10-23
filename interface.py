@@ -16,4 +16,3 @@ class Interface(tk.Tk):
 
 
 
-#example to show how github works
