@@ -1,7 +1,12 @@
 import tkinter as tk
 from controllers.login_system import LoginSystem
 from users.learner import Learner
+from users.educator import Educator
+from users.parent import Parent
 from register_frame import RegisterFrame
+from learner_frame import LearnerFrame
+from educator_frame import EducatorFrame
+from parent_frame import ParentFrame
 
 class LoginFrame(tk.Frame):
 
@@ -39,14 +44,16 @@ class LoginFrame(tk.Frame):
         login_button.grid(row=4, columnspan=2, padx=10, pady=10)
 
         self.login_text = tk.StringVar()
-        login_message = tk.Label(master=self, textvariable=self.login_text)
-        login_message.grid(row=5, columnspan=2, padx=10, pady=10)
+        self.login_message = tk.Label(master=self, textvariable=self.login_text)
+        self.login_message.grid(row=5, columnspan=2, padx=10, pady=10)
 
         register_button = tk.Button(master=self, text="Register new account",
                                     command = self.place_register_frame)
         register_button.grid(row=6, columnspan=2, padx=10, pady=10)
         
     def place_register_frame(self):
+        self.username_entry.delete(0, tk.END)
+        self.password_entry.delete(0, tk.END)
         self.place_forget()
 
         register_frame = RegisterFrame(self.master, self)
@@ -62,8 +69,23 @@ class LoginFrame(tk.Frame):
             self.password_entry.delete(0, tk.END)
 
             if isinstance(user, Learner):
-
                 self.place_forget()
 
-                pass
+                learner_frame = LearnerFrame(self.master, self, user)
+                learner_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+            
+            elif isinstance(user, Educator):
+                self.place_forget()
+
+                educator_frame = EducatorFrame(self.master, self, user)
+                educator_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+            elif isinstance(user, Educator):
+                self.place_forget()
+
+                parent_frame = ParentFrame(self.master, self, user)
+                parent_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+        else:
+            self.login_text.set("Incorrect email or password.")
 

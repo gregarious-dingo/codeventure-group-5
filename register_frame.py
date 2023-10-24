@@ -17,32 +17,32 @@ class RegisterFrame(tk.Frame):
         reg_password_label = tk.Label(master=self, text="Enter your new password:")
         reg_password_label.grid(row=3, column=0)
 
-        reg_username_entry = tk.Entry(master=self, width=20)
-        reg_username_entry.grid(row=2, column=1)
+        self.reg_username_entry = tk.Entry(master=self, width=20)
+        self.reg_username_entry.grid(row=2, column=1)
 
-        reg_password_entry = tk.Entry(master=self, width=20)
-        reg_password_entry.grid(row=3, column=1)
+        self.reg_password_entry = tk.Entry(master=self, width=20)
+        self.reg_password_entry.grid(row=3, column=1)
 
         type_user_label = tk.Label(master=self, text="What type of user are you registering as?")
         type_user_label.grid(row=4, column=0, sticky=tk.E)
 
-        user_type = tk.IntVar()
+        self.user_type = tk.StringVar()
 
         self.learner_button = tk.Radiobutton(self,
                                              text="Learner",
-                                             variable=user_type,
+                                             variable=self.user_type,
                                              value="Learner",
                                              command=self.disable_parent_child)
         
         self.educator_button = tk.Radiobutton(self,
                                              text="Educator",
-                                             variable=user_type,
+                                             variable=self.user_type,
                                              value="Educator",
                                              command=self.disable_parent_child)
         
         self.parent_button = tk.Radiobutton(self,
                                              text="Parent",
-                                             variable=user_type,
+                                             variable=self.user_type,
                                              value="Parent",
                                              command=self.ask_for_parent_child)
 
@@ -52,6 +52,13 @@ class RegisterFrame(tk.Frame):
 
         register_button = tk.Button(self, text="Register", command=self.register)
         register_button.grid(row=8, columnspan=2, pady=50)
+
+        self.register_text = tk.StringVar()
+        register_message = tk.Label(self, textvariable=self.register_text)
+        register_message.grid(row=9, columnspan=2)
+
+        back_to_login_button = tk.Button(self, text="Back to Login", command=self.back_to_login)
+        back_to_login_button.grid(row=10, columnspan=2)
 
     def ask_for_parent_child(self):
         self.child_label = tk.Label(self, text="Enter your child's username:")
@@ -68,5 +75,24 @@ class RegisterFrame(tk.Frame):
             pass
 
     def register(self):
-        self.login_frame.register
+        username = self.reg_username_entry.get()
+        password = self.reg_password_entry.get()
+        user_type = self.user_type.get()
+        if self.login_frame.login_system.username_available(username):
+            if user_type == "Parent":
+                child_username = (self.child_entry.get())
+                self.login_frame.login_system.user_register(username, password, user_type, child_username)
+                self.register_text.set("Account successfully registered!")
+            else:
+                self.login_frame.login_system.user_register(username, password, user_type)
+                self.register_text.set("Account successfully registered!")
+        else:
+            self.register_text.set(f'Username "{username}" already taken.')
+
+    def back_to_login(self):
+        self.place_forget()
+        self.login_frame.place(relx=0.5, rely=0.5, anchor= tk.CENTER)
+
+        
+
 

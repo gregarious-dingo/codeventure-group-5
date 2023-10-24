@@ -105,8 +105,15 @@ class LoginSystem:
     #     except FileNotFoundError:
     #         print("The file or directory does not exist.")
 
-    def user_register(self):
-        pass
+    def user_register(self, username, password, user_type, *child):
+        try:
+            with open("./data/users.txt", "a") as database:
+                if user_type == "Parent":
+                    database.write(f"{username};{password};{user_type};{child[0]}\n")
+                else:
+                    database.write(f"{username};{password};{user_type};NA\n")
+        except FileNotFoundError:
+            print("The file or directory does not exist.")
 
     def turn_off(self):
         Utils.display_str("You have turned off the machine.")
