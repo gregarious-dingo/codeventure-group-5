@@ -20,7 +20,7 @@ class RegisterFrame(tk.Frame):
         self.reg_username_entry = tk.Entry(master=self, width=20)
         self.reg_username_entry.grid(row=2, column=1)
 
-        self.reg_password_entry = tk.Entry(master=self, width=20)
+        self.reg_password_entry = tk.Entry(master=self, width=20, show="●")
         self.reg_password_entry.grid(row=3, column=1)
 
         type_user_label = tk.Label(master=self, text="What type of user are you registering as?")
@@ -78,14 +78,37 @@ class RegisterFrame(tk.Frame):
         username = self.reg_username_entry.get()
         password = self.reg_password_entry.get()
         user_type = self.user_type.get()
+
+        if self.login_frame.login_system.validate_username_register(username) and \
+           self.login_frame.login_system.validate_password_register(password):
+            pass
+        else:
+            self.register_text.set('Registration failed. Please do not leave any of the inputs blank.')
+            return
+        
+
         if self.login_frame.login_system.username_available(username):
-            if user_type == "Parent":
-                child_username = (self.child_entry.get())
-                self.login_frame.login_system.user_register(username, password, user_type, child_username)
-                self.register_text.set("Account successfully registered!")
+            if self.login_frame.login_system.validate_user_type_register(user_type):
+
+                if user_type == "Parent":
+                    child_username = (self.child_entry.get())
+                    if not child_username:
+                        self.register_text.set("Registration failed. Please input your child's name.")
+                        return
+                    elif self.login_frame.login_system.find_account_type(child_username) != "Learner" or \
+                        self.login_frame.login_system.username_available(child_username):
+                        self.register_text.set(f"Registration failed. The learner {child_username} doesn't exist!")
+                        return
+
+                    self.login_frame.login_system.user_register(username, password, user_type, child_username)
+                    self.register_text.set("Account successfully registered!")
+                else:
+                    self.login_frame.login_system.user_register(username, password, user_type)
+                    self.register_text.set("Account successfully registered!")
+
             else:
-                self.login_frame.login_system.user_register(username, password, user_type)
-                self.register_text.set("Account successfully registered!")
+                self.register_text.set('Registration failed. Please select a user type.')
+                return
         else:
             self.register_text.set(f'Username "{username}" already taken.')
 

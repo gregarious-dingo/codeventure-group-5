@@ -115,6 +115,24 @@ class LoginSystem:
         except FileNotFoundError:
             print("The file or directory does not exist.")
 
+    def validate_username_register(self, username):
+        if not username:
+            return False
+        else:            
+            return True
+
+    def validate_password_register(self, password):
+        if not password:
+            return False
+        else:            
+            return True
+        
+    def validate_user_type_register(self, user_type):
+        if not user_type:
+            return False
+        else:            
+            return True
+
     def turn_off(self):
         Utils.display_str("You have turned off the machine.")
 
