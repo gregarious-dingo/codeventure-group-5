@@ -11,7 +11,7 @@ class LearnerFrame(tk.Frame):
         welcome_message = tk.Label(self, text=f'Welcome {user.username}!')
         welcome_message.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
 
-        select_learning_module_button = tk.Button(self, text="Select A Learning Module", command=self.select_learning_module)
+        select_learning_module_button = tk.Button(self, text="Select a Learning Module", command=self.select_learning_module)
         select_learning_module_button.grid(row=1, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
 
         check_progress_button = tk.Button(self, text="Check Progress", command=self.check_progress)
