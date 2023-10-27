@@ -13,7 +13,7 @@ class LearningModulesFrame(tk.Frame):
         self.user = user
         self.learning_modules = Learning_Modules()
         levels = self.learning_modules.levels
-
+    
         selection_message = tk.Label(self, text=f'Hi, {user.username}. Please select one of the following modules:')
         selection_message.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
 
@@ -48,8 +48,7 @@ class LearningModulesFrame(tk.Frame):
         self.learner_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def select_level(self, level):
-        print("clicked")
         self.place_forget()
-        level_frame = LevelFrame(self.master, self, level, self.user)
+        level_frame = LevelFrame(self.master, self, level, 0, self.user)
         level_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
