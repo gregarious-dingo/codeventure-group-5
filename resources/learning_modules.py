@@ -80,7 +80,7 @@ lessons = [
                   
         'For example, to teach a computer to say "Hello, world!", we type print("Hello, world")',
         'The "print" is commanding the computer to speak, while "Hello, world!" is what it will speak'],
-        Quiz([{"question": "What is Python", 
+        Quiz([{"question": "What is Python?", 
             "options": ["A text-based programming language", "A human language", "A dog's name"],
             "correct_answer": 1},
             {"question": "What does print do?",

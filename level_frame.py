@@ -1,4 +1,5 @@
 import tkinter as tk
+from quiz_frame import QuizFrame
 
 class LevelFrame(tk.Frame):
     def __init__(self, master, modules_frame, level, material_index, user):
@@ -21,12 +22,12 @@ class LevelFrame(tk.Frame):
             
             continue_button = tk.Button(self, text="Continue", command=self.continue_level)
             continue_button.grid(row=2, column=1, padx=20, pady=10, sticky=tk.W)
-        else:
-            level_material_message = tk.Label(self, text=f'tada')
-            level_material_message.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
 
-        select_another_button = tk.Button(self, text="Select another module", command=self.select_another_module)
-        select_another_button.grid(row=3, column=0, columnspan=2, padx=10, pady=30, sticky=tk.N)
+            select_another_button = tk.Button(self, text="Select another module", command=self.select_another_module)
+            select_another_button.grid(row=3, column=0, columnspan=2, padx=10, pady=30, sticky=tk.N)
+        else:
+            self.start_quiz()
+
 
     def select_another_module(self):
         self.place_forget()
@@ -41,3 +42,8 @@ class LevelFrame(tk.Frame):
         self.place_forget()
         next_level_frame = LevelFrame(self.master, self.modules_frame, self.level, self.material_index + 1, self.user)
         next_level_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+    def start_quiz(self):
+        self.place_forget()
+        quiz_frame = QuizFrame(self.master, self.modules_frame, self.level, 0, self.user)
+        quiz_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
