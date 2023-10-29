@@ -34,9 +34,8 @@ class ChallengeFrame(tk.Frame):
     def submit(self):
         answer=self.answer_text.get('1.0','end')
 
-        if answer:
-            if answer == self.current_challenge['correct_answer']:
-                self.next_challenge()
+        if answer == self.current_challenge['correct_answer']:
+            self.next_challenge()
 
-            else:
-                self.next_challenge()
+        else:
+            self.next_challenge()
