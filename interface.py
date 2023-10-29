@@ -14,7 +14,3 @@ if __name__ == "__main__":
     login = LoginFrame(codeventure)
     login.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
     codeventure.mainloop()
-
-
-
-

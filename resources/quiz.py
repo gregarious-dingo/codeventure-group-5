@@ -1,3 +1,5 @@
+from utils.utils import Utils
+
 class Quiz:
     def __init__(self, quiz_questions):
         self.quiz_questions = quiz_questions

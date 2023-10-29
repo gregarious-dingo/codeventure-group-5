@@ -1,4 +1,5 @@
 import tkinter as tk
+from challenge_frame import ChallengeFrame
 
 class QuizFrame(tk.Frame):
     def __init__(self, master, modules_frame, level, question_index, user):
@@ -32,6 +33,8 @@ class QuizFrame(tk.Frame):
 
         else:
             # Move to challenge frame
+            challenge_frame = ChallengeFrame(self.master, self.modules_frame, self.level, 0, self.user)
+            challenge_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def next_question(self):
         self.place_forget()

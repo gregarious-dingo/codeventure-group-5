@@ -1,44 +1,35 @@
-# Import Module
 from tkinter import *
- 
-# create root window
-root = Tk()
- 
-# root window title and dimension
-root.title("Welcome to GeekForGeeks")
-# Set geometry(widthxheight)
-root.geometry('350x200')
- 
-# adding menu bar in root window
-# new item in menu bar labelled as 'New'
-# adding more items in the menu bar 
-menu = Menu(root)
-item = Menu(menu)
-item.add_command(label='New')
-menu.add_cascade(label='File', menu=item)
-root.config(menu=menu)
- 
-# adding a label to the root window
-lbl = Label(root, text = "Are you a Geek?")
-lbl.grid()
- 
-# adding Entry Field
-txt = Entry(root, width=10)
-txt.grid(column =1, row =0)
- 
- 
-# function to display user text when
-# button is clicked
-def clicked():
- 
-    res = "You wrote" + txt.get()
-    lbl.configure(text = res)
- 
-# button widget with red color text inside
-btn = Button(root, text = "Click me" ,
-             fg = "red", command=clicked)
-# Set Button Grid
-btn.grid(column=2, row=0)
- 
-# Execute Tkinter
-root.mainloop()
+class InputPage(Frame):
+    def __init__(self, parent, controller):
+        Frame.__init__(self,parent)        
+
+        label = Label(self, text="Zorgplan input")
+        label.grid(row=0, column=0, sticky ='n', columnspan =2)
+
+        # i brought your variable in the class for example sake 
+
+        namesInput = ["First:", "second:", "Third:", "Fourth:", "Fifth:"]
+
+        self.entryWidgets = [] # we want to call this in another function so we assign it as self.variableName
+
+        labelWidgets = []
+
+        #LOOP TO CREATE WIDGETS
+        for i in range(0, len(namesInput)):
+            labelWidgets.append(Label(self, text = namesInput[i]))
+            self.entryWidgets.append(Entry(self))
+            labelWidgets[-1].grid(row= i+1, column =0, sticky='e')
+            self.entryWidgets[-1].grid(row= i+1, column = 1, sticky='w')
+
+        submit = Button(self, text = "Submit", command = self.getEntries)
+        submit.grid(row = 6, column =0, columnspan =2)
+
+    def getEntries(self):
+        results = []
+
+        for x in self.entryWidgets: # i.e for each widget in entryWidget list
+            results.append(x.get())
+        print(results)
+
+app = ZorgplanGrafiek()
+app.mainloop()
