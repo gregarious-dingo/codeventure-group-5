@@ -1,11 +1,12 @@
 import tkinter as tk
 
 class ChallengeFrame(tk.Frame):
-    def __init__(self, master, module_frame, level, challenge_index, user):
+    def __init__(self, master, module_frame, level, challenge_index, challenge_score, user):
         super().__init__(master)
         self.level = level
         self.challenge = level.challenge.challenges
         self.challenge_index = challenge_index
+        self.challenge_score = challenge_score
         self.module_frame = module_frame
         self.user = user
 
@@ -23,24 +24,27 @@ class ChallengeFrame(tk.Frame):
             submit_button = tk.Button(self, text="Submit", command=self.submit)
             submit_button.grid(row= 5, columnspan=2, pady=50)
         else:
+            num_of_challenges = len(self.challenge)
+            self.user.progress_tracker.update_challenge_score(self.level.level, self.challenge_score, num_of_challenges)
             self.place_forget()
             self.module_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def next_challenge(self):
         self.place_forget()
-        next_challenge_frame = ChallengeFrame(self.master, self.module_frame, self.level, self.challenge_index + 1, self.user)
+        next_challenge_frame = ChallengeFrame(self.master, 
+                                              self.module_frame, 
+                                              self.level, 
+                                              self.challenge_index + 1, 
+                                              self.challenge_score,
+                                              self.user)
         next_challenge_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def submit(self):
         answer=self.answer_text.get('1.0', 'end')
-
-        if answer:
-            if answer == self.current_challenge['correct_answer']:
-                self.next_challenge()
-
-            else:
-                self.next_challenge()
+     
+        if answer == self.current_challenge['correct_answer']:
+            self.challenge_score += 1
+            self.next_challenge()
 
         else:
-            level_name_message = tk.Label(self, text="Please type your answer in the textbox.")
-            level_name_message.grid(row=8, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
+            self.next_challenge()

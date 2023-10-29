@@ -45,5 +45,5 @@ class LevelFrame(tk.Frame):
 
     def start_quiz(self):
         self.place_forget()
-        quiz_frame = QuizFrame(self.master, self.modules_frame, self.level, 0, self.user)
+        quiz_frame = QuizFrame(self.master, self.modules_frame, self.level, 0, 0, self.user)
         quiz_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)

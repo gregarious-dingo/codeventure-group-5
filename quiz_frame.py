@@ -2,13 +2,14 @@ import tkinter as tk
 from challenge_frame import ChallengeFrame
 
 class QuizFrame(tk.Frame):
-    def __init__(self, master, modules_frame, level, question_index, user):
+    def __init__(self, master, modules_frame, level, question_index, quiz_score, user):
         super().__init__(master)
         self.modules_frame = modules_frame
         self.level = level
         self.question_index = question_index
         self.user = user
         self.quiz = level.quiz
+        self.quiz_score = quiz_score
         
         if question_index != len(self.quiz):
             self.quiz_question = self.quiz.quiz_questions[question_index]
@@ -33,12 +34,14 @@ class QuizFrame(tk.Frame):
 
         else:
             # Move to challenge frame
-            challenge_frame = ChallengeFrame(self.master, self.modules_frame, self.level, 0, self.user)
+            num_of_question = len(self.quiz)
+            self.user.progress_tracker.update_quiz_score(self.level.level, self.quiz_score, num_of_question)
+            challenge_frame = ChallengeFrame(self.master, self.modules_frame, self.level, 0, 0, self.user)
             challenge_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def next_question(self):
         self.place_forget()
-        next_question_frame = QuizFrame(self.master, self.modules_frame, self.level, self.question_index + 1, self.user)
+        next_question_frame = QuizFrame(self.master, self.modules_frame, self.level, self.question_index + 1, self.quiz_score, self.user)
         next_question_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def submit(self):
@@ -47,6 +50,7 @@ class QuizFrame(tk.Frame):
         if answer:
             if int(answer) == self.quiz_question['correct_answer']:
                 # Update progress tracker. Score increment by 1
+                self.quiz_score += 1
                 self.next_question()
             else:
                 # Update progress tracker ? Score doesn't go up

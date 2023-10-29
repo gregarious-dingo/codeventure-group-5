@@ -7,8 +7,11 @@ class ProgressTracker:
         self.quiz_scores = [{'score': 0, 'score_display': "Not Completed!"} for _ in range(len(self.learning_modules.levels))]
         # self.challenge_scores = [{'score': 0, 'score_display': "Not Completed!"} for _ in range(len(self.learning_modules.levels))]
         self.challenge_scores = []
-        for level in self.learning_modules.levels:
-            if level.challenge is not None:
+        for level in self.learning_modules.levels: # GUI CHANGES ***** Changed some of this code to fit GUI usage
+            if level.challenge is None:
+                self.challenge_scores.append(None)
+
+            elif level.challenge is not None:
                 self.challenge_scores.append({'score': 0, 'score_display': "Not Completed!"})
     
     def update_quiz_score(self, level, new_score, num_of_questions):
@@ -21,7 +24,7 @@ class ProgressTracker:
         score_to_be_updated['score'] = new_score
         score_to_be_updated['score_display'] = f"{new_score}/{num_of_questions}"
 
-    def display_progress(self):
+    def display_progress(self): # GUI CHANGES***** Due to changing some implementation in __init__() this function will not work properly
         for i in range(len(self.quiz_scores)):
             Utils.display_str(f"Level {i + 1}")
             print(f"Quiz {i + 1}: {self.quiz_scores[i]['score_display']}")
