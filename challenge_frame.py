@@ -32,7 +32,7 @@ class ChallengeFrame(tk.Frame):
         next_challenge_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def submit(self):
-        answer=self.answer_text.get('1.0', 'end')
+        answer=self.answer_text.get('1.0','end')
 
         if answer:
             if answer == self.current_challenge['correct_answer']:
@@ -40,7 +40,3 @@ class ChallengeFrame(tk.Frame):
 
             else:
                 self.next_challenge()
-
-        else:
-            level_name_message = tk.Label(self, text="Please type your answer in the textbox.")
-            level_name_message.grid(row=8, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
