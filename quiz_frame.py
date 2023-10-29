@@ -28,8 +28,8 @@ class QuizFrame(tk.Frame):
 
                 row += 1
 
-            register_button = tk.Button(self, text="Submit", command=self.submit)
-            register_button.grid(row=row + 3, columnspan=2, pady=50)
+            submit_button = tk.Button(self, text="Submit", command=self.submit)
+            submit_button.grid(row=row + 3, columnspan=2, pady=50)
 
         else:
             # Move to challenge frame
