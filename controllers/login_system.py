@@ -3,6 +3,7 @@ from users.learner import Learner
 from users.parent import Parent
 from users.educator import Educator
 from utils.utils import Utils
+import codecs
 
 class LoginSystem:
     def __init__(self):
@@ -22,6 +23,8 @@ class LoginSystem:
                 for line in users_lines:
                     (username, password, account_type, learner) = line.strip().split(";")
                     account = None
+
+                    password = codecs.decode(password, 'rot13')
                     if account_type == "Learner":
                         account = Learner(username, password)
                     elif account_type == "Parent":
@@ -109,9 +112,24 @@ class LoginSystem:
         try:
             with open("./data/users.txt", "a") as database:
                 if user_type == "Parent":
-                    database.write(f"{username};{password};{user_type};{child[0]}\n")
-                else:
-                    database.write(f"{username};{password};{user_type};NA\n")
+                    new_account = Parent(username, password, child)
+                    self.users.append(new_account)
+
+                    encrypted = codecs.encode(password, 'rot13')
+                    database.write(f"{username};{encrypted};{user_type};{child[0]}\n")
+                elif user_type == "Educator":
+                    new_account = Educator(username, password)
+                    self.users.append(new_account)
+
+                    encrypted = codecs.encode(password, 'rot13')
+                    database.write(f"{username};{encrypted};{user_type};NA\n")
+                elif user_type == "Learner":
+                    new_account = Learner(username, password)
+                    self.users.append(new_account)
+
+                    encrypted = codecs.encode(password, 'rot13')
+                    database.write(f"{username};{encrypted};{user_type};NA\n")
+                
         except FileNotFoundError:
             print("The file or directory does not exist.")
 
