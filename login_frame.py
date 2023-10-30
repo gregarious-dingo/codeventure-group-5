@@ -69,10 +69,13 @@ class LoginFrame(tk.Frame):
             self.password_entry.delete(0, tk.END)
 
             if isinstance(user, Learner):
-                self.place_forget()
+                if not user.blocked:
+                    self.place_forget()
 
-                learner_frame = LearnerFrame(self.master, self, user)
-                learner_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+                    learner_frame = LearnerFrame(self.master, self, user)
+                    learner_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+                else:
+                    self.login_text.set("Looks like someone has been on the app for too long.")
             
             elif isinstance(user, Educator):
                 self.place_forget()
@@ -80,7 +83,7 @@ class LoginFrame(tk.Frame):
                 educator_frame = EducatorFrame(self.master, self, user)
                 educator_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-            elif isinstance(user, Educator):
+            elif isinstance(user, Parent):
                 self.place_forget()
 
                 parent_frame = ParentFrame(self.master, self, user)
