@@ -80,7 +80,7 @@ class LoginFrame(tk.Frame):
                 educator_frame = EducatorFrame(self.master, self, user)
                 educator_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-            elif isinstance(user, Educator):
+            elif isinstance(user, Parent):
                 self.place_forget()
 
                 parent_frame = ParentFrame(self.master, self, user)

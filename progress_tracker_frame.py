@@ -3,12 +3,16 @@ from resources.progress_tracker import ProgressTracker
 from collapsible_pane import cpane
 
 class ProgressTrackerFrame(tk.Frame):
-    def __init__(self, master, learner_frame, user):
+    def __init__(self, master, learner_frame, user, is_parent):
         super().__init__(master)
         self.learner_frame = learner_frame
 
-        selection_message = tk.Label(self, text=f'Doing great, {user.username}!')
-        selection_message.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
+        if is_parent:
+            welcome_message = tk.Label(self, text=f"{user.username}'s progress.")
+            welcome_message.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)        
+        else:
+            welcome_message = tk.Label(self, text=f'Doing great, {user.username}!')
+            welcome_message.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
 
         row = 1
         for i in range(len(user.progress_tracker.quiz_scores)):
