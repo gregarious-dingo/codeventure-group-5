@@ -40,10 +40,13 @@ class ChallengeFrame(tk.Frame):
         next_challenge_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def submit(self):
-        answer=self.answer_text.get('1.0', 'end')
-     
+        answer=self.answer_text.get('1.0', 'end-1c')
+        print(answer)
+        print(self.current_challenge['correct_answer'])
+        print(answer == self.current_challenge['correct_answer'])
         if answer == self.current_challenge['correct_answer']:
             self.challenge_score += 1
+
             self.next_challenge()
 
         else:

@@ -10,7 +10,7 @@ class QuizFrame(tk.Frame):
         self.user = user
         self.quiz = level.quiz
         self.quiz_score = quiz_score
-        
+
         if question_index != len(self.quiz):
             self.quiz_question = self.quiz.quiz_questions[question_index]
 
@@ -53,7 +53,6 @@ class QuizFrame(tk.Frame):
                 self.quiz_score += 1
                 self.next_question()
             else:
-                # Update progress tracker ? Score doesn't go up
                 self.next_question()
         else:
             level_name_message = tk.Label(self, text="Please select an answer.")
