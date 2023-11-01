@@ -22,7 +22,7 @@ class LearningModulesFrame(tk.Frame):
         selection_message = tk.Label(self, text=f'Hi, {user.username}. Please select one of the following modules:')
         selection_message.grid(row=1, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
 
-        row = 1  # Initialize row
+        row = 2  # Initialize row
         for i in range(0, len(levels), 2):
             level_left = levels[i]
             level_right = levels[i + 1] if i + 1 < len(levels) else None
@@ -31,8 +31,8 @@ class LearningModulesFrame(tk.Frame):
             left_frame = tk.Frame(self)
             right_frame = tk.Frame(self)
 
-            left_frame.grid(row=row + 1, column=0, padx=35, pady=10, sticky=tk.E)
-            right_frame.grid(row=row + 1, column=1, padx=0, pady=10, sticky=tk.W)
+            left_frame.grid(row=row, column=0, padx=35, pady=10, sticky=tk.E)
+            right_frame.grid(row=row, column=1, padx=0, pady=10, sticky=tk.W)
 
             button_left = tk.Button(left_frame, text=level_left.name, 
                                     command=lambda level=level_left: self.select_level(level))
@@ -46,7 +46,7 @@ class LearningModulesFrame(tk.Frame):
             row += 1
 
         back_to_menu_button = tk.Button(self, text="Back to menu", command=self.back_to_menu)
-        back_to_menu_button.grid(row=row + 1, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
+        back_to_menu_button.grid(row=row, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
 
     def back_to_menu(self):
         self.place_forget()
