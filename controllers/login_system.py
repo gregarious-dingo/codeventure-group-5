@@ -141,8 +141,17 @@ class LoginSystem:
 
     def validate_password_register(self, password):
         if not password:
+            print("Password has been ")
             return False
-        else:            
+        elif len(password) < 8:
+            return False
+        elif not any(char.isdigit() for char in password):
+            return False
+        elif not any(char.isupper() for char in password):
+            return False
+        elif not any(char.islower() for char in password):
+            return False
+        else:
             return True
         
     def validate_user_type_register(self, user_type):
