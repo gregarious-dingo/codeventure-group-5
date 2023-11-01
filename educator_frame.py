@@ -44,6 +44,13 @@ class EducatorSelectLearnerFrame(tk.Frame):
         
         learner_list.pack(fill=tk.BOTH)
 
+        back_button = tk.Button(self,
+                                text="Back to menu",
+                                command=self.back_to_educator_menu)
+        back_button.pack()
+
+
+
         def check_selected_learner(event):
             self.place_forget()
             selected_learner = learner_list.curselection()
@@ -59,4 +66,8 @@ class EducatorSelectLearnerFrame(tk.Frame):
             learner_progress_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
         learner_list.bind('<<ListboxSelect>>', check_selected_learner)
+
+    def back_to_educator_menu(self):
+        self.place_forget()
+        self.educator_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
         
