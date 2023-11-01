@@ -296,7 +296,10 @@ lessons = [
            "correct_answer": 2},
           {"question": "What is the purpose of 'finally' block in Python?",
            "options": ["To raise an error", "To define functions", "To specify the final answer"],
-           "correct_answer": 3}])),
+           "correct_answer": 3}]),
+        Challenge(
+            None
+        )),
 ]
 
 

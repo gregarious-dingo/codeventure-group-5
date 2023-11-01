@@ -10,7 +10,11 @@ class ChallengeFrame(tk.Frame):
         self.module_frame = module_frame
         self.user = user
 
-        if self.challenge_index != len(self.challenge):
+        if self.challenge == None:
+            self.place_forget()
+            self.module_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+        
+        elif self.challenge_index != len(self.challenge):
             self.current_challenge = self.challenge[challenge_index]
             self.challenge_question = self.current_challenge['question']
 
