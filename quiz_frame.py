@@ -115,11 +115,11 @@ class QuizResultFrame(tk.Frame):
 
     
         move_to_challenge_button = tk.Button(self,
-                                             text="Move to challenge",
-                                             command=self.move_to_challenge)
+                                             text="Next",
+                                             command=self.next)
         move_to_challenge_button.pack()
 
-    def move_to_challenge(self):
+    def next(self):
         self.place_forget()
         challenge_frame = ChallengeFrame(self.master, self.modules_frame, self.level, 0, 0, self.user)
         challenge_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
