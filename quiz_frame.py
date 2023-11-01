@@ -2,7 +2,7 @@ import tkinter as tk
 from challenge_frame import ChallengeFrame
 
 class QuizFrame(tk.Frame):
-    def __init__(self, master, modules_frame, level, question_index, quiz_score, user, learner_answers=[]):
+    def __init__(self, master, modules_frame, level, question_index, quiz_score, user, learner_answers=None):
         super().__init__(master)
         self.modules_frame = modules_frame
         self.level = level
@@ -10,6 +10,8 @@ class QuizFrame(tk.Frame):
         self.user = user
         self.quiz = level.quiz
         self.quiz_score = quiz_score
+        if learner_answers is None:
+            learner_answers = []
         self.learner_answers = learner_answers
 
         if question_index != len(self.quiz):
@@ -34,7 +36,6 @@ class QuizFrame(tk.Frame):
             submit_button.grid(row=row + 3, columnspan=2, pady=50)
 
         else:
-            # Move to challenge frame
             num_of_question = len(self.quiz)
             self.user.progress_tracker.update_quiz_score(self.level.level, self.quiz_score, num_of_question)
             self.show_quiz_result()
@@ -51,6 +52,7 @@ class QuizFrame(tk.Frame):
         next_question_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def show_quiz_result(self):
+        #Show quiz result
         self.place_forget()
         quiz_result_frame = QuizResultFrame(self.master,
                                             self.modules_frame,
@@ -113,7 +115,6 @@ class QuizResultFrame(tk.Frame):
             quiz_num += 1
             answer_index += 1
 
-    
         next_button = tk.Button(self,
                                 text="Next",
                                 command=self.next)
@@ -124,5 +125,6 @@ class QuizResultFrame(tk.Frame):
         if self.level.challenge == None:
             self.modules_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
         else:
+            # Move to challenge frame
             challenge_frame = ChallengeFrame(self.master, self.modules_frame, self.level, 0, 0, self.user)
             challenge_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)

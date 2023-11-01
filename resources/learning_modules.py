@@ -6,39 +6,39 @@ class Learning_Modules:
     def __init__(self):
         self.levels = lessons
     
-    def add_level(self, level):
-        self.levels.append(level)
+    # def add_level(self, level):
+    #     self.levels.append(level)
     
-    def select_level(self, learner):
-        print("Available Levels:")
-        for i, level in enumerate(self.levels):
-            print(f"{i + 1}. {level.name}")
+    # def select_level(self, learner):
+    #     print("Available Levels:")
+    #     for i, level in enumerate(self.levels):
+    #         print(f"{i + 1}. {level.name}")
         
-        selected_lvl = input("Select a level by entering the number (Enter 0 to quit):\n")
+    #     selected_lvl = input("Select a level by entering the number (Enter 0 to quit):\n")
 
-        try:
-            selected_lvl = int(selected_lvl)
-            if 1 <= selected_lvl <= len(self.levels):
-                self.study_level(self.levels[selected_lvl - 1], learner)
-            elif selected_lvl == 0:
-                return
-            else:
-                Utils.display_str("Please enter a valid level.")
+    #     try:
+    #         selected_lvl = int(selected_lvl)
+    #         if 1 <= selected_lvl <= len(self.levels):
+    #             self.study_level(self.levels[selected_lvl - 1], learner)
+    #         elif selected_lvl == 0:
+    #             return
+    #         else:
+    #             Utils.display_str("Please enter a valid level.")
         
-        except ValueError:
-            print("Please enter a valid level number.")
+    #     except ValueError:
+    #         print("Please enter a valid level number.")
 
-    def study_level(self, level, learner):
-        print(f"You have selected the {level.name} level.")
-        print("Study notes:\n")
-        level.print_learning_materials()
+    # def study_level(self, level, learner):
+    #     print(f"You have selected the {level.name} level.")
+    #     print("Study notes:\n")
+    #     level.print_learning_materials()
 
-        input("\nReady to enter the quiz? Press Enter to start!")
-        level.quiz.start(level, learner)
+    #     input("\nReady to enter the quiz? Press Enter to start!")
+    #     level.quiz.start(level, learner)
 
-        if level.challenge:
-            input("\nReady to enter the challenge? Press Enter to start!")
-            level.challenge.start(level, learner)
+    #     if level.challenge:
+    #         input("\nReady to enter the challenge? Press Enter to start!")
+    #         level.challenge.start(level, learner)
 
 class Level:
     def __init__(self, level, name, learning_materials, quiz, challenge=None):

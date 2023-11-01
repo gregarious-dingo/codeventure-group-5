@@ -85,11 +85,9 @@ class RegisterFrame(tk.Frame):
         elif not password:
             self.register_text.set('Registration failed. Please enter a password.')
             return
-        elif not self.login_frame.login_system.validate_username_register(username):
-            self.register_text.set('Registration failed. Username must be at least 6 characters long and contain only letters and numbers.')
-            return
         elif not self.login_frame.login_system.validate_password_register(password):
-            self.register_text.set('Registration failed. Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.')
+            self.register_text.set('Registration failed. Password must be at least 8 characters long and contain at least one uppercase letter,\n'
+                                   +'one lowercase letter, and one number.')
             return
         
 

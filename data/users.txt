@@ -1,7 +1,6 @@
-learner1;yrneare1cj;Learner;NA
-learner2;yrneare2cj;Learner;NA
-parent1;cnerag1cj;Parent;learner1
-parent2;cnerag2cj;Parent;learner2
-educator1;rqhpngbe1cj;Educator;NA
-asd;nfqnfqsnfqs0N;Educator;NA
-parent3;Cnerag3cj;Parent;learner1
+learner1;Yrneare1cj;Learner;NA
+learner2;Yrneare2cj;Learner;NA
+educator1;Rqhpngbe1cj;Learner;NA
+educator2;Rqhpngbe2cj;Educator;NA
+parent1;Cnerag1cj;Parent;learner1
+parent2;Cnerag2cj;Parent;learner2

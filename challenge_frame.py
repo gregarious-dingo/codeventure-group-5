@@ -1,7 +1,7 @@
 import tkinter as tk
 
 class ChallengeFrame(tk.Frame):
-    def __init__(self, master, module_frame, level, challenge_index, challenge_score, user, learner_answers=[]):
+    def __init__(self, master, module_frame, level, challenge_index, challenge_score, user, learner_answers=None):
         super().__init__(master)
         self.level = level
         self.challenge = level.challenge.challenges
@@ -9,6 +9,8 @@ class ChallengeFrame(tk.Frame):
         self.challenge_score = challenge_score
         self.module_frame = module_frame
         self.user = user
+        if learner_answers is None:
+            learner_answers = []
         self.learner_answers = learner_answers
         
         if self.challenge_index != len(self.challenge):
@@ -46,7 +48,8 @@ class ChallengeFrame(tk.Frame):
                                               self.level, 
                                               self.challenge_index + 1, 
                                               self.challenge_score,
-                                              self.user)
+                                              self.user,
+                                              self.learner_answers)
         next_challenge_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def submit(self):

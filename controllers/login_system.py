@@ -44,30 +44,34 @@ class LoginSystem:
             return False
         
     def populate_educator_learners(self, educator):
+        """
+        Appends every Learner object in self.users list into
+        educator's learners list when loading the users
+        """
         educator.learners = []
         for account in self.users:
             if isinstance(account, Learner):
                 educator.learners.append(account)
 
-    def print_menu(self):
-        print("You have the following options:")
-        print("\t1. Login")
-        print("\t2. Register")
-        print("\t3. Turn Off")
+    # def print_menu(self):
+    #     print("You have the following options:")
+    #     print("\t1. Login")
+    #     print("\t2. Register")
+    #     print("\t3. Turn Off")
         
-    def user_login(self):
-        username = input("Enter your username: ")
-        if self.username_available(username):
-            Utils.display_str("User is not registered!")
-            return
-        password = input("Enter your password: ")
+    # def user_login(self):
+    #     username = input("Enter your username: ")
+    #     if self.username_available(username):
+    #         Utils.display_str("User is not registered!")
+    #         return
+    #     password = input("Enter your password: ")
 
-        authenticated = self.authenticate_user_login(username, password)
-        if authenticated:
-            return authenticated
-        else:
-            Utils.display_str("Wrong password!")
-            return
+    #     authenticated = self.authenticate_user_login(username, password)
+    #     if authenticated:
+    #         return authenticated
+    #     else:
+    #         Utils.display_str("Wrong password!")
+    #         return
 
     # def user_register(self):
     #     username = input("Enter your new username: ")
@@ -119,6 +123,11 @@ class LoginSystem:
     #         print("The file or directory does not exist.")
 
     def user_register(self, username, password, user_type, *child):
+        """
+        Takes the arguments and write them into users.txt file to store them
+        as users. The function also additionally encrypts the password (ROT13)
+        so that when viewing the files, the password is more secure.
+        """
         try:
             with open("./data/users.txt", "a") as database:
                 if user_type == "Parent":
@@ -145,17 +154,11 @@ class LoginSystem:
         except FileNotFoundError:
             print("The file or directory does not exist.")
 
-    def validate_username_register(self, username):
-        if not username:
-            return False
-        else:            
-            return True
-
     def validate_password_register(self, password):
-        if not password:
-            print("Password has been ")
-            return False
-        elif len(password) < 8:
+        """
+        Function to ensure that password meets certain complexities
+        """
+        if len(password) < 8:
             return False
         elif not any(char.isdigit() for char in password):
             return False
@@ -173,8 +176,8 @@ class LoginSystem:
         else:
             return True
 
-    def turn_off(self):
-        Utils.display_str("You have turned off the machine.")
+    # def turn_off(self):
+    #     Utils.display_str("You have turned off the machine.")
 
     def username_available(self, username):
         for user in self.users:
