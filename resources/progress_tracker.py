@@ -16,13 +16,15 @@ class ProgressTracker:
     
     def update_quiz_score(self, level, new_score, num_of_questions):
         score_to_be_updated = self.quiz_scores[level - 1]
-        score_to_be_updated['score'] = new_score
-        score_to_be_updated['score_display'] = f"{new_score}/{num_of_questions}"
+        if new_score > score_to_be_updated['score']:
+            score_to_be_updated['score'] = new_score
+            score_to_be_updated['score_display'] = f"{new_score}/{num_of_questions}"
 
     def update_challenge_score(self, level, new_score, num_of_questions):
         score_to_be_updated = self.challenge_scores[level - 1]
-        score_to_be_updated['score'] = new_score
-        score_to_be_updated['score_display'] = f"{new_score}/{num_of_questions}"
+        if new_score > score_to_be_updated['score']:
+            score_to_be_updated['score'] = new_score
+            score_to_be_updated['score_display'] = f"{new_score}/{num_of_questions}"
 
     def display_progress(self): # GUI CHANGES***** Due to changing some implementation in __init__() this function will not work properly
         for i in range(len(self.quiz_scores)):
