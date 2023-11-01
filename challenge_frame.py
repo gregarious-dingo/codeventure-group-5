@@ -18,15 +18,20 @@ class ChallengeFrame(tk.Frame):
             self.current_challenge = self.challenge[challenge_index]
             self.challenge_question = self.current_challenge['question']
 
+            challenge_instruction = tk.Label(self,
+                                             text='Please use double quotation ("), and leave a space after every variable assignment\n'+
+                                             'For example: variable1 = "my string"')
+            challenge_instruction.grid(row=0, column=1, padx=10, pady=10, sticky=tk.N)
+
             challenge_message = tk.Label(self, text=f"{self.challenge_question} \n\n\nEnter your answer:")
-            challenge_message.grid(row=0, column=0, columnspan=2, padx=10, pady=20, sticky=tk.N)
+            challenge_message.grid(row=1, column=0, columnspan=2, padx=10, pady=20, sticky=tk.N)
 
 
             self.answer_text = tk.Text(self, height=8)
-            self.answer_text.grid(row=2, column=1, sticky=tk.W)
+            self.answer_text.grid(row=3, column=1, sticky=tk.N)
 
             submit_button = tk.Button(self, text="Submit", command=self.submit)
-            submit_button.grid(row= 5, columnspan=2, pady=50)
+            submit_button.grid(row=6, columnspan=2, pady=50)
         else:
             num_of_challenges = len(self.challenge)
             self.user.progress_tracker.update_challenge_score(self.level.level, self.challenge_score, num_of_challenges)
