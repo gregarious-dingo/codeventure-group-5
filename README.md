@@ -11,8 +11,8 @@ CodeVenture is a learning management application built with Python and tkinter. 
   - Registered users can log in with their credentials.
 
 - User Types
-  - Learners: Access learning modules, take quizzes and challenges, and track progress.
-  - Educators: (Not Yet)
+  - Learners: Access learning modules, take quizzes and challenges, track progress, and log out.
+  - Educators: Check all learners' progress, and log out(Not yet implemented)
   - Parents: Check their child's progress, toggle account access, and log out.
 
 - Learner Features
