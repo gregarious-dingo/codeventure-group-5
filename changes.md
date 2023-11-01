@@ -34,8 +34,8 @@
 - Change Description:
     - Educator feedback feature removed.
 - Change Rationale:
-    - This feature is unnecessary as the progress tracker already gives feedback.
+    - This feature is redundant as the progress tracker already gives feedback.
 - Impact Analysis:
     - The removal of this feature will affect the requirements of the Parent / Educator Use Case Diagram. However, this will leave no other impact on the system’s other functionalities, architecture, performance or security considerations.
 - Benefits of the Change:
-    - Unnecessary feedback can be avoided which allows the learner to understand their mistakes without taking too much input.
+    - Redundant feedback can be avoided which allows the learner to understand their mistakes without taking too much input.
