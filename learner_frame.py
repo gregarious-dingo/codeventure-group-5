@@ -39,5 +39,5 @@ class LearnerFrame(tk.Frame):
 
     def check_progress(self):
         self.place_forget()
-        progress_tracker_frame = ProgressTrackerFrame(self.master, self, self.user, False)
+        progress_tracker_frame = ProgressTrackerFrame(self.master, self, self.user, False, False)
         progress_tracker_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)

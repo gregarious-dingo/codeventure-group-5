@@ -16,6 +16,7 @@ class LoginFrame(tk.Frame):
         self.login_system = LoginSystem()
         self.login_system.load_users()
 
+
         login_canvas = tk.Canvas(master=self, width=128, height=128)
         login_canvas = login_canvas.grid(row=0, columnspan=2, sticky=tk.S, padx=10, pady=10)
 

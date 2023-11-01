@@ -34,10 +34,20 @@ class LoginSystem:
                     else:
                         account = Educator(username, password)
                     self.users.append(account)
+                for account in self.users:
+                    if isinstance(account, Educator):
+                        self.populate_educator_learners(account)
+
             return True
         except FileNotFoundError:
             print(f"The file \"{self.file_path}\" does not exist!")
             return False
+        
+    def populate_educator_learners(self, educator):
+        educator.learners = []
+        for account in self.users:
+            if isinstance(account, Learner):
+                educator.learners.append(account)
 
     def print_menu(self):
         print("You have the following options:")
@@ -117,8 +127,10 @@ class LoginSystem:
 
                     encrypted = codecs.encode(password, 'rot13')
                     database.write(f"{username};{encrypted};{user_type};{child[0]}\n")
+
                 elif user_type == "Educator":
                     new_account = Educator(username, password)
+                    self.populate_educator_learners(new_account)
                     self.users.append(new_account)
 
                     encrypted = codecs.encode(password, 'rot13')

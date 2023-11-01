@@ -7,3 +7,6 @@ class Learner(User):
         self.account_type = "Learner"
         self.progress_tracker = ProgressTracker()
         self.blocked = False
+
+    def __str__(self) -> str:
+        return self.username
