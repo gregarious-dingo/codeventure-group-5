@@ -18,7 +18,7 @@ class QuizFrame(tk.Frame):
             quiz_name_message = tk.Label(self, text=f"{self.quiz_question['question']} \n\n\n\nPick a correct answer:")
             quiz_name_message.grid(row=0, column=0, columnspan=2, padx=10, pady=20, sticky=tk.N)
 
-            self.answer = tk.StringVar()
+            self.answer = tk.StringVar(self, "None")
             row = 1
             for i, option in enumerate(self.quiz_question["options"]):
                 self.answer_button = tk.Radiobutton(self,
@@ -62,9 +62,9 @@ class QuizFrame(tk.Frame):
 
     def submit(self):
         answer = self.answer.get()
-        self.learner_answers.append(answer)
 
-        if answer:
+        if answer != "None":
+            self.learner_answers.append(answer)
             if int(answer) == self.quiz_question['correct_answer']:
                 # Update progress tracker. Score increment by 1
                 self.quiz_score += 1

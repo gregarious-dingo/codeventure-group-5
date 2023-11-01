@@ -26,7 +26,7 @@ class RegisterFrame(tk.Frame):
         type_user_label = tk.Label(master=self, text="What type of user are you registering as?")
         type_user_label.grid(row=4, column=0, sticky=tk.E)
 
-        self.user_type = tk.StringVar()
+        self.user_type = tk.StringVar(self, "None")
 
         self.learner_button = tk.Radiobutton(self,
                                              text="Learner",

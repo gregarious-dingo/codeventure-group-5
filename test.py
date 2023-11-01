@@ -1,38 +1,30 @@
-import tkinter as tk
-from tkinter import ttk
-from tkinter.messagebox import showinfo
 
-# create the root window
-root = tk.Tk()
-root.title('Listbox')
-
-
-# create a list box
-langs = ('Java', 'C#', 'C', 'C++', 'Python',
-         'Go', 'JavaScript', 'PHP', 'Swift')
-
-var = tk.Variable(value=langs)
-
-listbox = tk.Listbox(
-    root,
-    listvariable=var,
-    height=6,
-    selectmode=tk.EXTENDED
-)
-
-listbox.pack(expand=True, fill=tk.BOTH)
-
-
-def items_selected(event):
-    # get all selected indices
-    selected_indices = listbox.curselection()
-    # get selected items
-    selected_langs = ",".join([listbox.get(i) for i in selected_indices])
-    msg = f'You selected: {selected_langs}'
-    showinfo(title='Information', message=msg)
-    print(type(selected_langs))
-
-
-listbox.bind('<<ListboxSelect>>', items_selected)
-
-root.mainloop()
+# Importing Tkinter module 
+from tkinter import *
+from tkinter.ttk import *
+ 
+# Creating master Tkinter window 
+master = Tk() 
+master.geometry("175x175") 
+ 
+# Tkinter string variable 
+# able to store any string value 
+v = StringVar(master, "1") 
+ 
+# Dictionary to create multiple buttons 
+values = {"RadioButton 1" : "1", 
+        "RadioButton 2" : "2", 
+        "RadioButton 3" : "3", 
+        "RadioButton 4" : "4", 
+        "RadioButton 5" : "5"} 
+ 
+# Loop is used to create multiple Radiobuttons 
+# rather than creating each button separately 
+for (text, value) in values.items(): 
+    Radiobutton(master, text = text, variable = v, 
+        value = value).pack(side = TOP, ipady = 5) 
+ 
+# Infinite loop can be terminated by 
+# keyboard or mouse interrupt 
+# or by any predefined function (destroy()) 
+mainloop() 

@@ -167,9 +167,10 @@ class LoginSystem:
             return True
         
     def validate_user_type_register(self, user_type):
-        if not user_type:
+        user_types = ["Learner", "Educator", "Parent"]
+        if user_type not in user_types:
             return False
-        else:            
+        else:
             return True
 
     def turn_off(self):
