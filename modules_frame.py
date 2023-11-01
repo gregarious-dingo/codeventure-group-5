@@ -13,11 +13,16 @@ class LearningModulesFrame(tk.Frame):
         self.user = user
         self.learning_modules = Learning_Modules()
         levels = self.learning_modules.levels
-    
-        selection_message = tk.Label(self, text=f'Hi, {user.username}. Please select one of the following modules:')
-        selection_message.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
 
-        row = 1  # Initialize row
+        title = tk.Label(master=self,
+                                text="Learning Modules",
+                                font=("Arial Bold", 22))
+        title.grid(row=0, columnspan=2, padx=10, pady=10)
+
+        selection_message = tk.Label(self, text=f'Hi, {user.username}. Please select one of the following modules:')
+        selection_message.grid(row=1, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
+
+        row = 2  # Initialize row
         for i in range(0, len(levels), 2):
             level_left = levels[i]
             level_right = levels[i + 1] if i + 1 < len(levels) else None

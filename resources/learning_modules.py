@@ -72,14 +72,15 @@ class Level:
 
 lessons = [
     Level(1, "Lesson 1: What is Python?",
-        ["Welcome to Python! Python is a text-based programming language used to tell a computer what to do",
-        "For example, if you have a robot friend, you want to teach it to do things.",
-        "You would do so by using Python and not the English language. This will give",
-        "the computer a set of simple and clear instructions. By communicating in this way",
-        "your robot friend will be able to do all sorts of cool things like playing games!\n\n"
-                  
-        'For example, to teach a computer to say "Hello, world!", we type print("Hello, world")',
-        'The "print" is commanding the computer to speak, while "Hello, world!" is what it will speak'],
+        [
+            "Welcome to Python! Python is a versatile, text-based programming language that allows you\n to instruct a computer to perform a wide range of tasks.",
+            "In this lesson, we'll explore the basics of Python and see how it works.\n\nImagine you have a robot friend, and you want to teach it how to perform various tasks.",
+            "Python is the language you'll use to communicate your instructions to the robot.\n\nIt's like giving your robot friend a set of simple and clear commands, making it capable \nof doing all sorts of cool things, from playing games to solving complex problems.",
+            "For instance, let's say you want the computer to greet you with 'Hello, world!'\n\nHere's how you can do it in Python:",
+            "print('Hello, world!')",
+            "In this example, the `print` command tells the computer to display the text 'Hello, world!' on the screen. \n\nYou can think of it as commanding the computer to speak, while 'Hello, world!' is what it will speak.\n\nPython is a powerful language that empowers you to create programs, automate tasks, and solve real-world problems.",
+            "So, let's dive in and explore the world of Python programming!"
+        ],
         Quiz([{"question": "What is Python?", 
             "options": ["A text-based programming language", "A human language", "A dog's name"],
             "correct_answer": 1},
@@ -95,11 +96,13 @@ lessons = [
             )),
 
     Level(2, "Lesson 2: Variables in Python",
-        ["In Python, a variable is like a container that can hold different types of information.",
-        "You can think of it as a box that stores data. These boxes have labels called variable names.",
-        "For example, if you want to store the number 42 in a variable, you can do it like this:",
-        "my_variable = 42",
-        "Now, `my_variable` holds the value 42, and you can use it in your programs."],
+        [
+            "In Python, a variable is like a container that can hold different types of information.",
+            "You can think of it as a box that stores data. \n\nThese boxes have labels called variable names.",
+            "For example, if you want to store the number 42 in a variable, you can do it like this:",
+            "my_variable = 42",
+            "Now, `my_variable` holds the value 42, and you can use it in your programs. \n\nVariables are crucial for storing and managing data.",
+        ],
         Quiz([{"question": "What is a variable in Python?",
             "options": ["A box that can hold data", "A type of snake", "A type of function"],
             "correct_answer": 1},
@@ -118,14 +121,13 @@ lessons = [
         ])),
 
     Level(3, "Lesson 3: Control Flow",
-        ["Introduction to if statements",
+        ["Introduction to if statements.",
          'An "if statement" is a fundamental control structure in Python and many other programming languages.',
-         'It allows you to make decisions in your code based on certain conditions. In simple terms, you can think',
-         'of an if statement as a way to tell the computer, "If a particular condition is met, do one thing; otherwise, do something else.',
+         'It allows you to make decisions in your code based on certain conditions. In simple terms, you can think \nof an if statement as a way to tell the computer, "If a particular condition is met, do one thing; otherwise, do something else.',
          'An if statement is in this form:', 
-         'if (boolean statement):',
-         '    do something',
-         "Introduction to loops",
+         'if (boolean statement):\n\
+                                # Code to run if the condition is met',
+         "Introduction to loops.",
          'A "for loop" in Python is used for iterating over a sequence (such as a list, tuple, string, or range) and performing a set of actions for each item in the sequence. ',
          "It allows you to automate repetitive tasks by executing the same code multiple times with different data." ],
         Quiz([{"question": "What is an if statement used for?",
@@ -142,10 +144,12 @@ lessons = [
         ])),
 
     Level(4, "Lesson 4: Lists and Arrays",
-        ["Lists and arrays are used to store collections of items in Python.",
-        "They are ordered and can hold different types of data, including numbers, strings, and more.",
-        "You can access and manipulate the elements of a list using indexes.",
-        "Let's dive into the world of lists and arrays."],
+        [
+            "Lists and arrays are fundamental for handling collections of items in Python.",
+            "They are ordered, versatile, and can store various data types, including numbers, strings, and more.",
+            "Accessing and manipulating list elements using indexes is crucial. \n\nFor example, you can create 'my_list' with values [1, 2, 3] and access the second element with 'my_list[1].'",
+            "Lists and arrays are the backbone for managing datasets and performing data operations in Python."
+        ],
         Quiz([{"question": "What is a list in Python?",
             "options": ["A way to store a single value", "A collection of items", "A mathematical operation"],
             "correct_answer": 2},
@@ -163,9 +167,12 @@ lessons = [
             }])),
 
     Level(5, "Lesson 5: Functions",
-        ["Functions are blocks of code that can be called with specific inputs,",
-        "and they perform a specific task or calculation. Functions are reusable pieces of code.",
-        "We can define our own functions in Python. Let's explore how to do that."],
+        [
+            "Functions are like building blocks in Python, allowing you to create reusable and modular code.",
+            "A function is a block of code that can be called with specific inputs, performing a particular task.",
+            "You can define your own functions in Python. \n\nFor instance, create an 'add_numbers' function that takes 'num1' and 'num2' as arguments and returns their sum.",
+            "Functions help you break down complex problems into manageable parts and make your code more organized and maintainable."
+        ],
         Quiz([{"question": "What is a function in Python?",
             "options": ["A variable", "A block of code that performs a specific task", "A data structure"],
             "correct_answer": 2},
@@ -183,10 +190,13 @@ lessons = [
             }])),
 
     Level(6, "Lesson 6: Dictionaries",
-        ["Dictionaries in Python are collections of key-value pairs.",
-        "Each key is unique and maps to a specific value. Dictionaries are unordered.",
-        "They are useful for storing data that needs to be quickly looked up by a unique key.",
-        "Let's explore how dictionaries work."],
+        [
+            "Dictionaries in Python are powerful for storing and retrieving data as key-value pairs.",
+            "Each key is unique and maps to a specific value, allowing efficient data retrieval.",
+            "Dictionaries are versatile and can store various data types, including numbers, strings, and even other dictionaries. \n\nFor example, you can create an empty dictionary 'my_dict' and add key-value pairs like 'name' with the value 'Evan.'",
+            "Dictionaries are vital for managing structured data and building efficient data structures.",
+            "Code example: \n\n def add_numbers(num1, num2): \nreturn num1 + num2"
+        ],
         Quiz([{"question": "What is a dictionary in Python?",
             "options": ["A collection of key-value pairs", "A type of loop", "A mathematical concept"],
             "correct_answer": 1},
@@ -204,9 +214,12 @@ lessons = [
             }])),
 
     Level(7, "Lesson 7: Modules and Libraries",
-        ["Python provides a rich ecosystem of modules and libraries that extend its capabilities.",
-        "Modules are collections of Python code that can be used in your programs.",
-        "In this lesson, we will learn how to import and use modules and libraries."],
+        [
+            "Python provides a rich ecosystem of modules and libraries that extend its capabilities.",
+            "Modules are collections of Python code that can be used in your programs. \n\nYou can think of them as pre-built tools to solve specific tasks.",
+            "For example, to create graphical user interfaces, we can use the 'tkinter' module. \n\nTo perform mathematical operations, we have the 'math' module.",
+            "Let's learn how to import and use modules and libraries to enhance your Python programs."
+        ],
         Quiz([{"question": "What are modules in Python?",
             "options": ["A type of variable", "Collections of Python code", "Functions with no arguments"],
             "correct_answer": 2},
@@ -221,9 +234,13 @@ lessons = [
             ])),
 
     Level(8, "Lesson 8: Strings and Text Manipulation",
-        ["In Python, strings are used to represent text. You can perform various operations",
-        "on strings, such as concatenation, slicing, and formatting.",
-        "Let's explore how to work with strings and manipulate text."],
+        [
+            "In Python, strings are used to represent text. \n\nYou can perform various operations on strings, such as concatenation, slicing, and formatting.",
+            "A string is enclosed within single or double quotes. For example: \n\nmy_string = 'Hello, World!'",
+            "Concatenating two strings: \n\nresult_string = my_string + ' Python'",
+            "You can also access individual characters within a string using indexing.",
+            "Let's explore how to work with strings and manipulate text effectively."
+        ],
         Quiz([
             {"question": "What is a string in Python?",
             "options": ["A collection of numbers", "A sequence of text characters", "A mathematical operation"],
@@ -242,9 +259,14 @@ lessons = [
             }])),
 
     Level(9, "Lesson 9: Conditional Statements",
-        ["Conditional statements allow you to make decisions in your code.",
-        "You can use 'if', 'elif', and 'else' to control the flow of your program based on conditions.",
-        "Let's dive into conditional statements and how to use them effectively."],
+        [
+            "Conditional statements allow you to make decisions in your code. You can use 'if', 'elif', and 'else' to control the flow of your program based on conditions.",
+            "An 'if' statement is used to execute a block of code when a condition is met. For example:",
+            "if condition:\n\
+                \t# Code to run if the condition is met",
+            "'elif' stands for 'else if' and is used for additional conditions when the initial 'if' condition is not met.",
+            "Let's dive into conditional statements and understand how to use them effectively."
+        ],
         Quiz([{"question": "What is the purpose of 'if' statements in Python?",
             "options": ["To repeat a block of code", "To make decisions based on conditions", "To define functions"],
             "correct_answer": 2},
@@ -263,9 +285,12 @@ lessons = [
         ])),
 
     Level(10, "Lesson 10: Error Handling",
-         ["Error handling in Python allows you to handle unexpected situations gracefully.",
-          "You can use 'try', 'except', 'finally', and 'raise' to manage errors in your code.",
-          "Let's explore how to handle errors effectively."],
+        [
+            "Error handling in Python allows you to handle unexpected situations gracefully. \n\nYou can use 'try', 'except', 'finally', and 'raise' to manage errors in your code.",
+            "A 'try' block is used to enclose code that may raise an error. \n\nIf an error occurs, it's caught by the 'except' block, where you can define how to handle it.",
+            "The 'finally' block is used to execute code regardless of whether an error occurred or not.",
+            "Let's explore how to handle errors effectively and make your Python programs more robust."
+        ],
          Quiz([{"question": "What is the purpose of 'try' and 'except' blocks in Python?",
            "options": ["To define functions", "To handle errors gracefully", "To create loops"],
            "correct_answer": 2},

@@ -22,10 +22,11 @@ CodeVenture is a learning management application built with Python and tkinter. 
   - Challenges: Complete open-ended challenges.
 
 - Parent Features
-  - Progress Tracking: Track the progress of their child
+  - Progress Tracker: Allows the user to check the progress of their child.
+  - Block Account: Allows the user to block their child's progress.
 
 - Educator Features
-  - Progress Tracking: Track the progress of every Learner
+  - Progress Tracker: Allows the user to check the progress of all learners.
 
 ## How to Run
 
