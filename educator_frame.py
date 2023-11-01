@@ -1,4 +1,5 @@
 import tkinter as tk
+from progress_tracker_frame import ProgressTrackerFrame
 
 class EducatorFrame(tk.Frame):
     def __init__(self, master, login_frame, user):
@@ -10,6 +11,11 @@ class EducatorFrame(tk.Frame):
 
         back_to_login_button = tk.Button(self, text="Log Out", command=self.log_out)
         back_to_login_button.grid(row=10, columnspan=2)
+
+    def check_progress(self):
+        self.place_forget()
+        learner_progress_frame = ProgressTrackerFrame(self.master, self, self.learner, False, True)
+        learner_progress_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def log_out(self):
         self.place_forget()

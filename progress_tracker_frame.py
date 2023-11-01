@@ -3,38 +3,67 @@ from resources.progress_tracker import ProgressTracker
 from collapsible_pane import cpane
 
 class ProgressTrackerFrame(tk.Frame):
-    def __init__(self, master, learner_frame, user, is_parent):
+    def __init__(self, master, learner_frame, user, is_parent, is_educator, users=None):
         super().__init__(master)
         self.learner_frame = learner_frame
 
         if is_parent:
             welcome_message = tk.Label(self, text=f"{user.username}'s progress.")
-            welcome_message.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)        
+            welcome_message.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
+        elif is_educator:
+            welcome_message = tk.Label(self, text = "All users' progress.")
+            welcome_message.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
         else:
             welcome_message = tk.Label(self, text=f'Doing great, {user.username}!')
             welcome_message.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
 
         row = 1
-        for i in range(len(user.progress_tracker.quiz_scores)):
-            level = user.progress_tracker.learning_modules.levels[i]
-            level_name = level.name
+        if is_educator:
+            for u in users:
+                user_welcome_message = tk.Label(self, text=f"{u.username}'s progress.")
+                user_welcome_message.grid(row=row, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)
+                row += 1
+                for i in range(len(u.progress_tracker.quiz_scores)):
+                    level = u.progress_tracker.learning_modules.levels[i]
+                    level_name = level.name
 
-            quiz_score_pane = cpane(self, f'{level_name} - Collapse', f'{level_name} - Expand')
-            quiz_score_pane.grid(row=row, column=0, sticky=tk.N, pady=10)
+                    quiz_score_pane = cpane(self, f'{level_name} - Collapse', f'{level_name} - Expand')
+                    quiz_score_pane.grid(row=row, column=0, sticky=tk.N, pady=10)
 
-            quiz_score = user.progress_tracker.quiz_scores[i]['score_display']
-            if user.progress_tracker.challenge_scores[i] is not None:
-                challenge_score = user.progress_tracker.challenge_scores[i]['score_display']
-                display_score = tk.Label(quiz_score_pane.frame,
-                        text=f'Quiz: {quiz_score}\nChallenge: {challenge_score}')
-                display_score.grid(row=row+1, column=0, pady=10)
+                    quiz_score = u.progress_tracker.quiz_scores[i]['score_display']
+                    if u.progress_tracker.challenge_scores[i] is not None:
+                        challenge_score = u.progress_tracker.challenge_scores[i]['score_display']
+                        display_score = tk.Label(quiz_score_pane.frame,
+                                text=f'Quiz: {quiz_score}\nChallenge: {challenge_score}')
+                        display_score.grid(row=row+1, column=0, pady=10)
 
-            else:
-                display_score = tk.Label(quiz_score_pane.frame,
-                                         text=f'Quiz: {quiz_score}')
-                display_score.grid(row=row+1, column=0, pady=10)
+                    else:
+                        display_score = tk.Label(quiz_score_pane.frame,
+                                                 text=f'Quiz: {quiz_score}')
+                        display_score.grid(row=row+1, column=0, pady=10)
 
-            row+=1
+                    row+=1
+        else:
+            for i in range(len(user.progress_tracker.quiz_scores)):
+                level = user.progress_tracker.learning_modules.levels[i]
+                level_name = level.name
+
+                quiz_score_pane = cpane(self, f'{level_name} - Collapse', f'{level_name} - Expand')
+                quiz_score_pane.grid(row=row, column=0, sticky=tk.N, pady=10)
+
+                quiz_score = user.progress_tracker.quiz_scores[i]['score_display']
+                if user.progress_tracker.challenge_scores[i] is not None:
+                    challenge_score = user.progress_tracker.challenge_scores[i]['score_display']
+                    display_score = tk.Label(quiz_score_pane.frame,
+                            text=f'Quiz: {quiz_score}\nChallenge: {challenge_score}')
+                    display_score.grid(row=row+1, column=0, pady=10)
+
+                else:
+                    display_score = tk.Label(quiz_score_pane.frame,
+                                             text=f'Quiz: {quiz_score}')
+                    display_score.grid(row=row+1, column=0, pady=10)
+
+                row+=1
 
         back_to_menu_button = tk.Button(self, text="Back to menu", command=self.back_to_menu)
         back_to_menu_button.grid(row=row+1, column=0, columnspan=2, padx=10, pady=10, sticky=tk.N)

@@ -32,7 +32,7 @@ class ParentFrame(tk.Frame):
 
     def check_progress(self):
         self.place_forget()
-        learner_progress_frame = ProgressTrackerFrame(self.master, self, self.learner, True)
+        learner_progress_frame = ProgressTrackerFrame(self.master, self, self.learner, True, False)
         learner_progress_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def toggle_block(self):
