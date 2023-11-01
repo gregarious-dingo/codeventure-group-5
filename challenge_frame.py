@@ -52,8 +52,6 @@ class ChallengeFrame(tk.Frame):
     def submit(self):
         answer=self.answer_text.get('1.0', 'end').strip()
         self.learner_answers.append(answer)
-        print(type(self.learner_answers[0]))
-        print(type(self.current_challenge['correct_answer']))
 
         if answer == self.current_challenge['correct_answer']:
             self.challenge_score += 1

@@ -115,8 +115,8 @@ class QuizResultFrame(tk.Frame):
 
     
         next_button = tk.Button(self,
-                                             text="Next",
-                                             command=self.next)
+                                text="Next",
+                                command=self.next)
         next_button.pack()
 
     def next(self):
