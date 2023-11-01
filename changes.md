@@ -22,18 +22,20 @@
 
 ## 3.
 - Change Description:
-
+    - 'Videogame-like' features have been discarded.
 - Change Rationale:
-
+    - These features could distract users from doing anything productive.
 - Impact Analysis:
-
+    - While loss of these features will affect the requirements of the young gamer, the system’s other functionalities, architecture, performance or security considerations are not affected.
 - Benefits of the Change:
+    - This allows the learners to solely focus on CodeVenture without being distracted by anything else.
 
 ## 4.
 - Change Description:
-
+    - Educator feedback feature removed.
 - Change Rationale:
-
+    - This feature is unnecessary as the progress tracker already gives feedback.
 - Impact Analysis:
-
+    - The removal of this feature will affect the requirements of the Parent / Educator Use Case Diagram. However, this will leave no other impact on the system’s other functionalities, architecture, performance or security considerations.
 - Benefits of the Change:
+    - Unnecessary feedback can be avoided which allows the learner to understand their mistakes without taking too much input.
