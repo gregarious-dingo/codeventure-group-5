@@ -12,7 +12,7 @@ CodeVenture is a learning management application built with Python and tkinter. 
 
 - User Types
   - Learners: Access learning modules, take quizzes and challenges, track progress, and log out.
-  - Educators: Check all learners' progress, and log out(Not yet implemented)
+  - Educators: Check all learners' progress, and log out
   - Parents: Check their child's progress, toggle account access, and log out.
 
 - Learner Features
@@ -20,6 +20,12 @@ CodeVenture is a learning management application built with Python and tkinter. 
   - Progress Tracking: Track quiz and challenge scores for different learning levels.
   - Quizzes: Take quizzes related to learning modules.
   - Challenges: Complete open-ended challenges.
+
+- Parent Features
+  - Progress Tracking: Track the progress of their child
+
+- Educator Features
+  - Progress Tracking: Track the progress of every Learner
 
 ## How to Run
 
@@ -38,20 +44,3 @@ CodeVenture is a learning management application built with Python and tkinter. 
    ```shell
    python interface.py
    ```
-
-4. **Features**
-  - Register: Allows the user to register an account of three types (Learner, Parent, Educator)
-  - Login: Allows the user to login to an existing account
-  - Logout: Allows the user to logout of their account
-  
-  # Learner
-  - Learning Module: Allows the user to learn about Python concepts, attempt quizzes and challenges
-  - Progress Tracker: Allows the user to 
-
-  # Parent
-  - Register: When registering, the user will be prompt to name their child
-  - Progress Tracker: Allows the user to check the progress of their child
-  - Block Account: Allows the user to block their child's progress
-
-  # Educator
-  - Progress Tracker: Allows the user to check the progress of all learners (Not yet implemented)

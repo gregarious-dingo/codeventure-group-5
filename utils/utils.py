@@ -9,5 +9,3 @@ class Utils:
     @staticmethod
     def invalid_input():
         Utils.display_str("Invalid input! Please select another option: ")
-
-    
