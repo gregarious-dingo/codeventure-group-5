@@ -3,6 +3,9 @@ from quiz_frame import QuizFrame
 
 class LevelFrame(tk.Frame):
     def __init__(self, master, modules_frame, level, material_index, user):
+        """
+        This frame displays the learning material of the selected learning module.
+        """
         super().__init__(master)
         self.modules_frame = modules_frame
         self.level = level

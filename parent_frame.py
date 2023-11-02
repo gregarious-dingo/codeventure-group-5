@@ -2,6 +2,12 @@ import tkinter as tk
 from progress_tracker_frame import ProgressTrackerFrame
 
 class ParentFrame(tk.Frame):
+    """
+    Menu frame when user logins as parent
+    Feature:
+    Check their child's progress
+    Block/unblock child's access from logging in
+    """
     def __init__(self, master, login_frame, user):
         super().__init__(master)
         self.login_frame = login_frame

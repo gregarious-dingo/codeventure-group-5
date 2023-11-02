@@ -11,6 +11,11 @@ from parent_frame import ParentFrame
 class LoginFrame(tk.Frame):
 
     def __init__(self, master):
+        """
+        Frame that allows the user to login or
+        move to the RegisterFrame if user wants to register
+        an account
+        """
         super().__init__(master=master)
         self.master = master
         self.login_system = LoginSystem()

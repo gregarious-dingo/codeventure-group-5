@@ -7,6 +7,9 @@ from resources.learning_modules import Learning_Modules
 from level_frame import LevelFrame
 
 class LearningModulesFrame(tk.Frame):
+    """
+    Frame that displays all the existing learning modules
+    """
     def __init__(self, master, learner_frame, user):
         super().__init__(master)
         self.learner_frame = learner_frame

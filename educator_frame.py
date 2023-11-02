@@ -2,6 +2,11 @@ import tkinter as tk
 from progress_tracker_frame import ProgressTrackerFrame
 
 class EducatorFrame(tk.Frame):
+    """
+    Menu frame for when user logins as Educator.
+    Feature of Educator:
+    Check any Learners' progress
+    """
     def __init__(self, master, login_frame, user):
         super().__init__(master)
         self.login_frame = login_frame
@@ -27,6 +32,10 @@ class EducatorFrame(tk.Frame):
         self.login_frame.place(relx=0.5, rely=0.5, anchor= tk.CENTER)
 
 class EducatorSelectLearnerFrame(tk.Frame):
+    """
+    Display a listbox that shows a list of Learners for the educator to choose from.
+    When one of the learners is clicked, their progress tracker is shown.
+    """
     def __init__(self, master, educator_frame, user):
         super().__init__(master)
         self.educator_frame = educator_frame

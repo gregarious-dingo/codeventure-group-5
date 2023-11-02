@@ -1,6 +1,6 @@
 learner1;Yrneare1cj;Learner;NA
 learner2;Yrneare2cj;Learner;NA
-educator1;Rqhpngbe1cj;Learner;NA
+educator1;Rqhpngbe1cj;Educator;NA
 educator2;Rqhpngbe2cj;Educator;NA
 parent1;Cnerag1cj;Parent;learner1
 parent2;Cnerag2cj;Parent;learner2

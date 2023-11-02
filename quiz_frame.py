@@ -2,6 +2,11 @@ import tkinter as tk
 from challenge_frame import ChallengeFrame
 
 class QuizFrame(tk.Frame):
+    """
+    Frame class for the quiz. This will be shown after a Learner
+    finishes reading the learning module's learning materials
+    by displaying quizzes related to the learning materials.
+    """
     def __init__(self, master, modules_frame, level, question_index, quiz_score, user, learner_answers=None):
         super().__init__(master)
         self.modules_frame = modules_frame
@@ -11,6 +16,7 @@ class QuizFrame(tk.Frame):
         self.quiz = level.quiz
         self.quiz_score = quiz_score
         if learner_answers is None:
+        # Ensure learner_answers is reset to empty list to avoid logic error
             learner_answers = []
         self.learner_answers = learner_answers
 
@@ -79,6 +85,9 @@ class QuizFrame(tk.Frame):
 
 
 class QuizResultFrame(tk.Frame):
+    """
+    Displays the results of the Learner's answers to each quiz question
+    """
     def __init__(self, master, modules_frame, level, learner_answers, quiz_score, user):
         super().__init__(master)
         self.modules_frame = modules_frame

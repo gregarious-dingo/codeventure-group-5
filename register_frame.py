@@ -2,6 +2,10 @@ import tkinter as tk
 from controllers.login_system import LoginSystem
 
 class RegisterFrame(tk.Frame):
+    """
+    Frame that allows the user to register a new account
+    with a new username, password and user type.
+    """
 
     def __init__(self, master, login_frame):
         super().__init__(master)
@@ -61,6 +65,10 @@ class RegisterFrame(tk.Frame):
         back_to_login_button.grid(row=10, columnspan=2)
 
     def ask_for_parent_child(self):
+        """
+        Displays a entry prompting user to enter
+        their child's username in the software
+        """
         self.child_label = tk.Label(self, text="Enter your child's username:")
         self.child_entry = tk.Entry(self)
 
@@ -68,6 +76,10 @@ class RegisterFrame(tk.Frame):
         self.child_entry.grid(row=7, column=1, sticky=tk.W)
 
     def disable_parent_child(self):
+        """
+        Removes the child entry when user does not
+        choose "parent" user type
+        """
         try:
             self.child_label.grid_remove()
             self.child_entry.grid_remove()

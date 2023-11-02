@@ -3,6 +3,9 @@ from resources.progress_tracker import ProgressTracker
 from collapsible_pane import cpane
 
 class ProgressTrackerFrame(tk.Frame):
+    """
+    Displays all the learning module along with its score and completion status
+    """
     def __init__(self, master, learner_frame, user, is_parent, is_educator, users=None):
         super().__init__(master)
         self.learner_frame = learner_frame

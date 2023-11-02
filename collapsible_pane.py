@@ -3,24 +3,28 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.ttk import *
 class cpane(ttk.Frame):
+   """
+   Helper function imported from the Internet from https://www.geeksforgeeks.org/collapsible-pane-in-tkinter-python/
+   A class that when instantiated creates a pane that can be expanded and collapsed
+   """
    def __init__(self, MainWindow, expanded_text, collapsed_text):
       ttk.Frame.__init__(self, MainWindow)
       # The class variable
       self.MainWindow = MainWindow
       self._expanded_text = expanded_text
       self._collapsed_text = collapsed_text
-      # Weight=1 to grow it's size as needed
+
       self.columnconfigure(1, weight=1)
       self._variable = tk.IntVar()
-      # Creating Checkbutton
+
       self._button = ttk.Checkbutton(self, variable=self._variable,
       command=self._activate, style="TButton")
       self._button.grid(row=0, column=0)
-      # Create a Horizontal line
+
       self._separator = ttk.Separator(self, orient="horizontal")
       self._separator.grid(row=0, column=1, sticky="we")
       self.frame = ttk.Frame(self)
-      # Activate the class
+
       self._activate()
    def _activate(self):
       if not self._variable.get():

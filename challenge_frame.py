@@ -1,6 +1,11 @@
 import tkinter as tk
 
 class ChallengeFrame(tk.Frame):
+    """
+    Frame class for the challenge. This will be shown after a Learner
+    finishes reading the learning module's learning materials
+    by displaying challenges related to the learning materials.
+    """
     def __init__(self, master, module_frame, level, challenge_index, challenge_score, user, learner_answers=None):
         super().__init__(master)
         self.level = level
@@ -10,10 +15,12 @@ class ChallengeFrame(tk.Frame):
         self.module_frame = module_frame
         self.user = user
         if learner_answers is None:
+            # Ensure learner_answers is reset to empty list to avoid logic error
             learner_answers = []
         self.learner_answers = learner_answers
         
         if self.challenge_index != len(self.challenge):
+            # Stops running this code when the last challenge question has been reached
             self.current_challenge = self.challenge[challenge_index]
             self.challenge_question = self.current_challenge['question']
 
@@ -34,6 +41,7 @@ class ChallengeFrame(tk.Frame):
         else:
             num_of_challenges = len(self.challenge)
             self.user.progress_tracker.update_challenge_score(self.level.level, self.challenge_score, num_of_challenges)
+            # Updates the challenge score on the Learner's progress tracker
             challenge_result_frame = ChallengeResultFrame(self.master,
                                                           self.module_frame,
                                                           self.level,
@@ -42,6 +50,9 @@ class ChallengeFrame(tk.Frame):
             challenge_result_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def next_challenge(self):
+        """
+        Function to go to the next challenge
+        """
         self.place_forget()
         next_challenge_frame = ChallengeFrame(self.master, 
                                               self.module_frame, 
@@ -53,6 +64,9 @@ class ChallengeFrame(tk.Frame):
         next_challenge_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def submit(self):
+        """
+        Function to submit and check answer correctness
+        """
         answer=self.answer_text.get('1.0', 'end').strip()
         self.learner_answers.append(answer)
 
@@ -65,6 +79,11 @@ class ChallengeFrame(tk.Frame):
             self.next_challenge()
 
 class ChallengeResultFrame(tk.Frame):
+    """
+    When all the challenge question of the current level is completed,
+    display a frame that shows the result of Learner's attempt at the
+    challenges
+    """
     def __init__(self, master, module_frame, level, learner_answers, user):
         super().__init__(master)
         self.module_frame = module_frame

@@ -3,6 +3,12 @@ from modules_frame import LearningModulesFrame
 from progress_tracker_frame import ProgressTrackerFrame
 
 class LearnerFrame(tk.Frame):
+    """
+    Menu frame when user logins as Learner.
+    Feature:
+    Select a learning module to study and attempt a quiz/challenge after
+    Check their progress
+    """
     def __init__(self, master, login_frame, user):
         super().__init__(master)
         self.login_frame = login_frame
