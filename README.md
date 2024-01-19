@@ -4,6 +4,8 @@
 
 CodeVenture is a learning management application built with Python and tkinter. It provides a user-friendly interface for learners, parents, and educators to access learning modules, take quizzes and challenges, track progress, and manage user accounts.
 
+This project is designed to meet the core requirements of FIT1055, ensuring reliability by its simplicity. It may not encompass a range of features but it is aligned our goals to build a solid foundation that aligns with the learning outcomes as well as act as a stable platform for potential future expansion.
+
 ## Features
 
 - User Registration and Login
